@@ -1,5 +1,7 @@
 # Internet Radio Player
 
+Internet Radio Player with an web interface.
+
 ## Usage:
 
 `python3 main.py`
