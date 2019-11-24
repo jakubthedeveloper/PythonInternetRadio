@@ -18,10 +18,10 @@ sudo apt-get install python-pip
 pip install -U Flask
 ```
 
-PyYAML - YAML parser and emitter for Python.
+oyaml - YAML parser which preserves dict ordering
 
 ```
-pip install pyyaml
+pip install oyaml
 ```
 
 ## Usage:
@@ -54,7 +54,7 @@ You can manage the station list in the stations.yml file.
 ```
 sudo apt-get update
 sudo apt-get install git python3 mpd mpc python-pip
-sudo pip3 install -U Flask pyyaml
+sudo pip3 install -U Flask oyaml
 git clone git@github.com:jakubthedeveloper/PythonInternetRadio.git radio
 ```
 
@@ -80,7 +80,8 @@ Connect headphones or speakers to the Raspberry Pi and click play in Web UI.
 Add startup script to cron:
 
 ```
-sudo crontab -e
+
+crontab -e
 ```
 
 and enter the following line:

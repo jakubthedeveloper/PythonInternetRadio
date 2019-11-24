@@ -3,7 +3,7 @@ import atexit
 from flask import Flask
 from flask import render_template
 from flask import request
-from yaml import load, dump
+import oyaml as yaml
 import argparse
 
 class Radio:
@@ -17,11 +17,11 @@ class Radio:
         self.port = args.port
 
         stationsFile = open("stations.yml", "r")
-        data = load(stationsFile)
+        data = yaml.load(stationsFile)
 
         self.stations = []
         self.currentStationUrl = None
-
+        print(data)
         for k in data:
             self.stations.append({
                 "name": k,
