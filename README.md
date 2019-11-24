@@ -37,7 +37,13 @@ optional arguments:
 
 ## Control Panel
 
+With default values, the control panel works on address:
+
 `http://127.0.0.1:1234/`
+
+If you have specified custom host and/or port, create the url by schema:
+
+`http://<host>:<port>/`
 
 ## Station list
 
