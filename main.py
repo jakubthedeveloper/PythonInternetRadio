@@ -21,7 +21,7 @@ class Radio:
 
         self.stations = []
         self.currentStationUrl = None
-        print(data)
+
         for k in data:
             self.stations.append({
                 "name": k,
@@ -45,8 +45,6 @@ class Radio:
 
         @app.route("/", methods=["GET", "POST"])
         def control_page(title="Radio control"):
-            #global currentStationUrl
-
             if request.method == "POST":
                 if request.form["submit"] == "Play":
                     self.currentStationUrl = str(request.form["station"])
