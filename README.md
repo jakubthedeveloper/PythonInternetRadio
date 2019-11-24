@@ -95,3 +95,7 @@ Reboot Rasperry Pi to check if the cron entry works:
 ```
 sudo reboot
 ```
+
+# Blog
+
+[PL] Artykuł na blogu: [Python – odtwarzacz radia internetowego – Linux i Raspberry Pi](https://programisty-dzien-powszedni.pl/python-odtwarzacz-radia-internetowego-linux-i-raspberry-pi/)
