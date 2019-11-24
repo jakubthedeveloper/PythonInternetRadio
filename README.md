@@ -26,7 +26,14 @@ pip install pyyaml
 
 ## Usage:
 
-`python3 main.py`
+```
+python3 main.py [-h] [--host HOST] [--port PORT]
+
+optional arguments:
+  -h, --help   show this help message and exit
+  --host HOST  Web ui host, default: 0.0.0.0
+  --port PORT  Web ui port, default: 1234
+```
 
 ## Control Panel
 

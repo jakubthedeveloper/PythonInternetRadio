@@ -4,46 +4,60 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from yaml import load, dump
+import argparse
 
-stationsFile = open("stations.yml", 'r')
-data = load(stationsFile)
+class Radio:
+    def __init__(self):
+        parser = argparse.ArgumentParser(description="Application for checking and informing arduino if there are unread messages on imap mailbox.")
+        parser.add_argument("--host", default="0.0.0.0", help="Web ui host")
+        parser.add_argument("--port", default=1234, help="Web ui port")
+        args = parser.parse_args()
 
-stations = []
+        self.host = args.host
+        self.port = args.port
 
-for k in data:
-    print(k)
-    stations.append({
-        "name": k,
-        "url": data[k]
-    })
+        stationsFile = open("stations.yml", "r")
+        data = load(stationsFile)
 
-def mpcCommand(cmd):
-	p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
-	return p.stdout.read()
+        self.stations = []
+        self.currentStationUrl = None
 
-def exitHandler():
-    mpcCommand(['mpc', 'stop'])
-    mpcCommand(['mpc', 'clear'])
+        for k in data:
+            self.stations.append({
+                "name": k,
+                "url": data[k]
+            })
 
-atexit.register(exitHandler)
+        atexit.register(self.exitHandler)
+        self.initWebUi()
 
-currentStationUrl = None
-app = Flask(__name__, template_folder='template')
+    def mpcCommand(self, cmd):
+    	p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+    	return p.stdout.read()
 
-@app.route('/', methods=['GET', 'POST'])
-def control_page(title='Radio control'):
-    global currentStationUrl
+    def exitHandler(self):
+        self.mpcCommand(["mpc", "stop"])
+        self.mpcCommand(["mpc", "clear"])
 
-    if request.method == 'POST':
-        if request.form['submit'] == 'Play':
-            currentStationUrl = str(request.form['station'])
-            mpcCommand(['mpc', 'clear'])
-            mpcCommand(['mpc', 'add', currentStationUrl])
-            mpcCommand(['mpc', 'play'])
-        elif request.form['submit'] == 'Stop':
-            mpcCommand(['mpc', 'stop'])
 
-    return render_template('/control.html', title=title, stations=stations, currentStationUrl=currentStationUrl)
+    def initWebUi(self):
+        app = Flask(__name__, template_folder="template")
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=1234, debug=True)
+        @app.route("/", methods=["GET", "POST"])
+        def control_page(title="Radio control"):
+            #global currentStationUrl
+
+            if request.method == "POST":
+                if request.form["submit"] == "Play":
+                    self.currentStationUrl = str(request.form["station"])
+                    self.mpcCommand(["mpc", "clear"])
+                    self.mpcCommand(["mpc", "add", self.currentStationUrl])
+                    self.mpcCommand(["mpc", "play"])
+                elif request.form["submit"] == "Stop":
+                    self.mpcCommand(["mpc", "stop"])
+
+            return render_template("/control.html", title=title, stations=self.stations, currentStationUrl=self.currentStationUrl)
+
+        app.run(host=self.host, port=self.port)
+
+radio = Radio()
