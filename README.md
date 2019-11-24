@@ -2,6 +2,28 @@
 
 Internet Radio Player with an web interface.
 
+## Dependencies
+
+mpc and mpc - music player daemon
+
+```
+sudo apt-get update
+sudo apt-get install mpd mpc
+```
+
+flask - lightweight web application framework
+
+```
+sudo apt-get install python-pip
+pip install -U Flask
+```
+
+PyYAML - YAML parser and emitter for Python.
+
+```
+pip install pyyaml
+```
+
 ## Usage:
 
 `python3 main.py`
