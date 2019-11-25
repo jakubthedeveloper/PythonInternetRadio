@@ -84,7 +84,6 @@ Connect headphones or speakers to the Raspberry Pi and click play in Web UI.
 Add startup script to cron:
 
 ```
-
 crontab -e
 ```
 
