@@ -1,10 +1,14 @@
 import oyaml as yaml
 
 class StationsParser:
-    def getStations(fileName):
+    def getStationsFromFile(self, fileName):
         stationsFile = open(fileName, "r")
-        data = yaml.load(stationsFile)
 
+        return self.getStationsFromYaml(
+            yaml.load(stationsFile)
+        )
+
+    def getStationsFromYaml(self, data):
         stations = []
 
         for k in data:

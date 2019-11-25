@@ -5,7 +5,8 @@ from stations_parser import StationsParser
 
 class WebUi:
     def __init__(self, mpc, host, port):
-        stations = StationsParser.getStations("stations.yml")
+        stationsParser = StationsParser()
+        stations = stationsParser.getStationsFromFile("stations.yml")
         app = Flask(__name__, template_folder="template")
         self.currentStationUrl = None
 

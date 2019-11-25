@@ -49,6 +49,10 @@ If you have specified custom host and/or port, create the url by schema:
 
 You can manage the station list in the stations.yml file.
 
+## Run tests
+
+`sh test.sh`
+
 ## Installation on Raspberry Pi with Raspbian OS.
 
 ```
