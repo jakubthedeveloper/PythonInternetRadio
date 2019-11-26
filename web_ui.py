@@ -30,7 +30,7 @@ class WebUi:
                 elif request.form["action"] == "volume_increase_fast":
                     mpc.volumeIncreaseFast()
                 elif request.form["action"] == "pair_bt":
-                    cmd = 'echo -e "power on\nconnect ' + bluetoothSpeakerDevice + ' \n quit" | /usr/bin/bluetoothctl'
+                    cmd = 'echo -e "power on\nconnect ' + bluetoothSpeakerDevice + ' \n quit \n" | /usr/bin/bluetoothctl'
                     subprocess.call(cmd, shell=True)
 
             return render_template(
