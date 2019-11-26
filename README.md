@@ -36,7 +36,7 @@ optional arguments:
 ```
 
 ## Control Panel
-![](https://i0.wp.com/programisty-dzien-powszedni.pl/wp-content/uploads/2019/11/radio-control-panel.png?w=400&ssl=1)
+![](https://i1.wp.com/programisty-dzien-powszedni.pl/wp-content/uploads/2019/11/RadioControl.png)
 
 With default values, the control panel works on address:
 
