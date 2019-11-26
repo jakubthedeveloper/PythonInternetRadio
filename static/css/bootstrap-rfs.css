@@ -3,3 +3,7 @@
     font-size: calc(2rem + 0.3vw) ;
   }
 }
+
+option {
+  font-size: 0.8rem;
+}
