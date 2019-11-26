@@ -2,9 +2,10 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from stations_service import StationsServiceFactory
+import subprocess
 
 class WebUi:
-    def __init__(self, mpc, host, port):
+    def __init__(self, mpc, host, port, bluetoothSpeakerDevice):
         self.stationsService = StationsServiceFactory.getService()
 
         app = Flask(__name__, template_folder="template")
@@ -28,12 +29,15 @@ class WebUi:
                     mpc.volumeDecreaseFast()
                 elif request.form["action"] == "volume_increase_fast":
                     mpc.volumeIncreaseFast()
+                elif request.form["action"] == "pair_bt":
+                	subprocess.Popen(['echo', '-e', '"power on\nconnect', bluetoothSpeakerDevice, '\n quit"', '|', '/usr/bin/bluetoothctl'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
 
             return render_template(
                 "/control.html",
                 title=title,
                 stations=self.stationsService.getStations(),
-                currentStationIndex=self.stationsService.currentStationIndex
+                currentStationIndex=self.stationsService.currentStationIndex,
+                bluetoothSpeakerDevice=bluetoothSpeakerDevice
             )
 
         app.run(host=host, port=port)

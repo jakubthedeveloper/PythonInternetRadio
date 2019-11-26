@@ -55,6 +55,12 @@
                 </div>
             </div>
         </div>
+
+        {% if bluetoothSpeakerDevice %}
+        <div class="w-100 mt-4 text-center">
+            <button class="btn btn-light w-50 actionButton" data-action="pair_bt">Pair Bluetooth Speaker</button>
+        </div>
+        {% endif %}
     </div>
 
     <script type="text/javascript">
