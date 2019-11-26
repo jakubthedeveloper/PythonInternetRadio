@@ -12,14 +12,22 @@ class WebUi:
         @app.route("/", methods=["GET", "POST"])
         def control_page(title="Radio control"):
             if request.method == "POST":
-                if request.form["submit"] == "Play":
-                    self.stationsService.currentStationIndex = int(request.form["station"])
+                if request.form["action"] == "play":
+                    self.stationsService.currentStationIndex = int(request.form["stationIndex"])
                     currentStation = self.stationsService.getCurrentStation()
 
                     if currentStation is not None:
                         mpc.play(currentStation.get('url'))
-                elif request.form["submit"] == "Stop":
+                elif request.form["action"] == "stop":
                     mpc.stop()
+                elif request.form["action"] == "volume_decrease":
+                    mpc.volumeDecrease()
+                elif request.form["action"] == "volume_increase":
+                    mpc.volumeIncrease()
+                elif request.form["action"] == "volume_decrease_fast":
+                    mpc.volumeDecreaseFast()
+                elif request.form["action"] == "volume_increase_fast":
+                    mpc.volumeIncreaseFast()
 
             return render_template(
                 "/control.html",

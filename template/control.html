@@ -1,20 +1,82 @@
 <!doctype html>
 <head>
-<title>Radio control</title>
+    <title>Radio control</title>
+
+    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-rfs.css') }}" />
 </head>
 <body>
-{% if title %}
-	<h1>{{ title }}</h1>
-{% endif %}
+    <div class="m-4">
+        <div class="container">
+            <div class="text-center">
+                <h1>{{ title }}</h1>
+            </div>
 
-<form method='POST' action='/'>
-    <select name='station'>
-        {% for i in range(stations | length) %}
-          <option value="{{ i }}" {% if i == currentStationIndex %}selected{% endif %}>{{ stations[i].name }}</option>
-        {% endfor %}
-    </select>
+            <div class="row">
+                <div class="col-12">
+                    <select name="stationIndex" class="form-control">
+                        {% for i in range(stations | length) %}
+                          <option value="{{ i }}" {% if i == currentStationIndex %}selected{% endif %}>{{ stations[i].name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
 
-    <input type="submit" name="submit" value="Play" />
-	<input type="submit" name="submit" value="Stop" />
-</form>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <button class="btn btn-success w-100" id="playButton">Play</button>
+                </div>
+
+                <div class="col-6">
+                    <button class="btn btn-warning w-100 actionButton" data-action="stop">Stop</button>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-6">
+                    <button class="btn btn-info w-100 actionButton" data-action="volume_decrease">Vol -</button>
+                </div>
+
+                <div class="col-6">
+                    <button class="btn btn-info w-100 actionButton" data-action="volume_increase">Vol +</button>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-6">
+                    <button class="btn btn-info w-100 actionButton" data-action="volume_decrease_fast">Vol --</button>
+                </div>
+
+                <div class="col-6">
+                    <button class="btn btn-info w-100 actionButton" data-action="volume_increase_fast">Vol ++</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $('#playButton').click(function() {
+            $.ajax({
+              type: "POST",
+              url: '/',
+              data: {
+                'action': 'play',
+                'stationIndex': $('select[name="stationIndex"]').val()
+              }
+            });
+        });
+
+        $(document).on('click', '.actionButton', function(ev) {
+            $.ajax({
+              type: "POST",
+              url: '/',
+              data: {
+                'action': $(ev.target).data('action')
+              }
+            });
+        });
+    </script>
 </body>
