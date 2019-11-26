@@ -102,6 +102,10 @@ Reboot Rasperry Pi to check if the cron entry works:
 sudo reboot
 ```
 
+# Bluetooth speaker
+
+In you want to connect a Bluetooth speaker to Raspberry Pi you have to install Bluez-alsa. I managed to do it using the instruction on the page [how-to-stream-sound-to-a-bluetooth-device-from-a-raspberry-pi-zero](https://raspberrypi.stackexchange.com/questions/90267/how-to-stream-sound-to-a-bluetooth-device-from-a-raspberry-pi-zero)
+
 # Blog
 
 [PL] Artykuł na blogu: [Python – odtwarzacz radia internetowego – Linux i Raspberry Pi](https://programisty-dzien-powszedni.pl/python-odtwarzacz-radia-internetowego-linux-i-raspberry-pi/)
