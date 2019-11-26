@@ -9,8 +9,8 @@
 
 <form method='POST' action='/'>
     <select name='station'>
-        {% for station in stations %}
-          <option value="{{ station.url }}" {% if station.url == currentStationUrl %}selected{% endif %}>{{ station.name }}</option>
+        {% for i in range(stations | length) %}
+          <option value="{{ i }}" {% if i == currentStationIndex %}selected{% endif %}>{{ stations[i].name }}</option>
         {% endfor %}
     </select>
 

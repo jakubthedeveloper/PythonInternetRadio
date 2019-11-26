@@ -13,8 +13,11 @@ class WebUi:
         def control_page(title="Radio control"):
             if request.method == "POST":
                 if request.form["submit"] == "Play":
-                    self.stationsService.currentStationUrl = str(request.form["station"])
-                    mpc.play(self.stationsService.currentStationUrl)
+                    self.stationsService.currentStationIndex = int(request.form["station"])
+                    currentStation = self.stationsService.getCurrentStation()
+
+                    if currentStation is not None:
+                        mpc.play(currentStation.get('url'))
                 elif request.form["submit"] == "Stop":
                     mpc.stop()
 
@@ -22,7 +25,7 @@ class WebUi:
                 "/control.html",
                 title=title,
                 stations=self.stationsService.getStations(),
-                currentStationUrl=self.stationsService.currentStationUrl
+                currentStationIndex=self.stationsService.currentStationIndex
             )
 
         app.run(host=host, port=port)

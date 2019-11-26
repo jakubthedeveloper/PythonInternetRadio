@@ -2,9 +2,9 @@ from stations_parser import StationsParser
 
 class StationsService:
     instance = None
-    currentIndex = 0
+
     stations = None
-    currentStationUrl = None
+    currentStationIndex = None
 
     def __init__(self):
         stationsParser = StationsParser()
@@ -12,6 +12,12 @@ class StationsService:
 
     def getStations(self):
         return self.stations
+
+    def getCurrentStation(self):
+        if self.currentStationIndex is None or self.currentStationIndex < 0 or self.currentStationIndex >= len(self.stations):
+            return None
+
+        return self.stations[self.currentStationIndex]
 
 class StationsServiceFactory:
     instance = None
