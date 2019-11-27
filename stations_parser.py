@@ -5,7 +5,7 @@ class StationsParser:
         stationsFile = open(fileName, "r")
 
         results = self.getStationsFromYaml(
-            yaml.load(stationsFile, Loader=yaml.BaseLoader)
+            yaml.load(stationsFile, Loader=yaml.Loader)
         )
 
         stationsFile.close()
