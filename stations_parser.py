@@ -4,9 +4,12 @@ class StationsParser:
     def getStationsFromFile(self, fileName):
         stationsFile = open(fileName, "r")
 
-        return self.getStationsFromYaml(
-            yaml.load(stationsFile)
+        results = self.getStationsFromYaml(
+            yaml.load(stationsFile, Loader=yaml.BaseLoader)
         )
+
+        stationsFile.close()
+        return results
 
     def getStationsFromYaml(self, data):
         stations = []

@@ -13,7 +13,7 @@ class TestStationsParser(unittest.TestCase):
 
         stationsParser = StationsParser()
         results = stationsParser.getStationsFromYaml(
-            yaml.load(data)
+            yaml.load(data, Loader=yaml.BaseLoader)
         )
 
         self.assertEqual(results[0].get('name'), "[EN] BBC World News")

@@ -13,21 +13,21 @@ class TestStationsParser(unittest.TestCase):
         mpc.mpcCommand = MagicMock()
 
         mpc.play("http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p")
-        mpc.mpcCommand.assert_called_with(['mpc', 'play'])
+        mpc.mpcCommand.assert_called_with(['play'])
 
     def test_clear_calls_mpc_clear_command(self):
         mpc = Mpc()
         mpc.mpcCommand = MagicMock()
 
         mpc.clear()
-        mpc.mpcCommand.assert_called_with(['mpc', 'clear'])
+        mpc.mpcCommand.assert_called_with(['clear'])
 
     def test_clear_calls_mpc_stop_command(self):
         mpc = Mpc()
         mpc.mpcCommand = MagicMock()
 
         mpc.stop()
-        mpc.mpcCommand.assert_called_with(['mpc', 'stop'])
+        mpc.mpcCommand.assert_called_with(['stop'])
 
 if __name__ == '__main__':
     unittest.main()
