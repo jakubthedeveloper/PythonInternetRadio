@@ -2,6 +2,8 @@
 
 Internet Radio Player with an web interface.
 
+[![Build Status](https://travis-ci.org/jakubthedeveloper/PythonInternetRadio.svg?branch=master)](https://travis-ci.org/jakubthedeveloper/PythonInternetRadio)
+
 ## Dependencies
 
 mpc and mpc - music player daemon
