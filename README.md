@@ -27,12 +27,20 @@ pip install oyaml
 ## Usage:
 
 ```
-python3 main.py [-h] [--host HOST] [--port PORT]
+main.py [-h] [--host HOST] [--port PORT]
+               [--bluetooth-speaker-device BLUETOOTH_SPEAKER_DEVICE]
+               [--show-volume-controls {yes,no}]
+
+Internet radio with Web interface for Linux or Raspbian.
 
 optional arguments:
-  -h, --help   show this help message and exit
-  --host HOST  Web ui host, default: 0.0.0.0
-  --port PORT  Web ui port, default: 1234
+  -h, --help            show this help message and exit
+  --host HOST           Web ui host
+  --port PORT           Web ui port
+  --bluetooth-speaker-device BLUETOOTH_SPEAKER_DEVICE
+                        Bluetooth device identifier (taken from bluetoothctl)
+  --show-volume-controls {yes,no}
+                        Show volume controls, choices: yes / no, default: yes
 ```
 
 ## Control Panel
