@@ -15,7 +15,6 @@ class TestStationsService(unittest.TestCase):
         first.currentIndex = 10
 
         self.assertEqual(first.currentIndex, second.currentIndex)
-        None
 
     def test_if_service_returns_stations_list(self):
         service = StationsServiceFactory.getService()
