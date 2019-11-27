@@ -1,8 +1,6 @@
 from stations_parser import StationsParser
 
 class StationsService:
-    instance = None
-
     stations = None
     currentStationIndex = None
 
