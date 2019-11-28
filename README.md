@@ -116,6 +116,19 @@ sudo reboot
 
 In you want to connect a Bluetooth speaker to Raspberry Pi you have to install Bluez-alsa. I managed to do it using the instruction on the page [how-to-stream-sound-to-a-bluetooth-device-from-a-raspberry-pi-zero](https://raspberrypi.stackexchange.com/questions/90267/how-to-stream-sound-to-a-bluetooth-device-from-a-raspberry-pi-zero)
 
+Here is my audio output config in /etc/mpd.conf that works with Creative Muvo 2c bluetooth speaker:
+
+```
+audio_output {
+       type            "alsa"
+       name            "BluetoothSpeaker"
+       device          "bluealsa:DEV=XX:XX:XX:XX:XX:XX,PROFILE=a2dp" # replace XX:XX:XX:XX:XX:XX with bluetooth device id
+       mixer           "software"
+}
+```
+
+
+
 # Blog
 
 [PL] Artykuł na blogu: [Python – odtwarzacz radia internetowego – Linux i Raspberry Pi](https://programisty-dzien-powszedni.pl/python-odtwarzacz-radia-internetowego-linux-i-raspberry-pi/)
