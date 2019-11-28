@@ -15,3 +15,9 @@ class TestBluetoothService(unittest.TestCase):
         first.bluetoothSpeakerDevice = "test_device"
 
         self.assertEqual(first.bluetoothSpeakerDevice, second.bluetoothSpeakerDevice)
+
+    def test_if_it_sets_device(self):
+        service = BluetoothServiceFactory.getService()
+        service.setDevice("TestingDevice")
+
+        self.assertEqual(service.bluetoothSpeakerDevice, "TestingDevice")
