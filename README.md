@@ -123,7 +123,6 @@ audio_output {
        type            "alsa"
        name            "BluetoothSpeaker"
        device          "bluealsa:DEV=XX:XX:XX:XX:XX:XX,PROFILE=a2dp" # replace XX:XX:XX:XX:XX:XX with bluetooth device id
-       mixer           "software"
 }
 ```
 
