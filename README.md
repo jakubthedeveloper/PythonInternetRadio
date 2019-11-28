@@ -127,6 +127,9 @@ audio_output {
 }
 ```
 
+# Example ecosystem
+
+![Example ecosystem for Raspberry Radio](https://i0.wp.com/programisty-dzien-powszedni.pl/wp-content/uploads/2019/11/radio-1.png)
 
 
 # Blog
