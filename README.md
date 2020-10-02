@@ -72,7 +72,7 @@ You can manage the station list in the stations.yml file.
 sudo apt-get update
 sudo apt-get install git python3 mpd mpc python-pip
 sudo pip3 install -U Flask oyaml
-git clone git@github.com:jakubthedeveloper/PythonInternetRadio.git radio
+git clone https://github.com/jakubthedeveloper/PythonInternetRadio.git radio
 ```
 
 Create startup script, for example in path /home/pi/radio-start.sh, with contents:
