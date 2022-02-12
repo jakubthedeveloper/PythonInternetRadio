@@ -29,7 +29,7 @@ pip install oyaml
 ## Usage:
 
 ```
-main.py [-h] [--host HOST] [--port PORT]
+python3 main.py [-h] [--host HOST] [--port PORT]
                [--bluetooth-speaker-device BLUETOOTH_SPEAKER_DEVICE]
                [--show-volume-controls {yes,no}]
 

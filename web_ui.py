@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 from flask import render_template
 from flask import request
 from stations_service import StationsServiceFactory
@@ -6,9 +6,20 @@ from bluetooth_service import BluetoothServiceFactory
 
 class WebUi:
     def __init__(self, mpc, host, port, showBluetoothControls, showVolumeControls):
+        self.darkMode = False
         self.stationsService = StationsServiceFactory.getService()
 
         app = Flask(__name__, template_folder="template")
+
+        @app.route("/enable-light-mode")
+        def enable_light_mode():
+            self.darkMode = False
+            return redirect(url_for('control_page'))
+
+        @app.route("/enable-dark-mode")
+        def enable_dark_mode():
+            self.darkMode = True
+            return redirect(url_for('control_page'))
 
         @app.route("/", methods=["GET", "POST"])
         def control_page(title="Radio control"):
@@ -38,7 +49,8 @@ class WebUi:
                 stations=self.stationsService.getStations(),
                 currentStationIndex=self.stationsService.currentStationIndex,
                 showBluetoothControls=showBluetoothControls,
-                showVolumeControls=showVolumeControls
+                showVolumeControls=showVolumeControls,
+                darkMode=self.darkMode
             )
 
         app.run(host=host, port=port)

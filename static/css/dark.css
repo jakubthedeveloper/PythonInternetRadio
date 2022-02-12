@@ -1,0 +1,10 @@
+body {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+.form-control {
+    background-color: #495057;
+    color: #ffffff;
+    border-color: #212528;
+}

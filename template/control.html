@@ -7,12 +7,30 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-rfs.css') }}" />
+
+    {% if darkMode %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/dark.css') }}" />
+    {% endif %}
 </head>
 <body>
     <div class="m-4">
         <div class="container">
-            <div class="text-center">
-                <h1>{{ title }}</h1>
+            <div class="row">
+                <div class="col-8">
+                    <h1>{{ title }}</h1>
+                </div>
+
+                <div class="col-4 text-right">
+                    {% if darkMode %}
+                    <a href="enable-light-mode" title="Light mode">
+                        <img src="static/icons/light.png" />
+                    </a>
+                    {% else %}
+                    <a href="enable-dark-mode" title="Dark mode">
+                        <img src="static/icons/dark.png" />
+                    </a>
+                    {% endif %}
+                </div>
             </div>
 
             <div class="row">
