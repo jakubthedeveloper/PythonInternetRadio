@@ -6,7 +6,7 @@ Internet Radio Player with an web interface.
 
 ## Dependencies
 
-mpc and mpc - music player daemon
+mpd and mpc - music player daemon
 
 ```
 sudo apt-get update
